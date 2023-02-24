@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import Light from './Light';
 import './TrafficLight.css'
 
 function TrafficLight({activeLight}) {
@@ -6,18 +7,9 @@ function TrafficLight({activeLight}) {
 
   return (
     <div className="light-container">
-      <div
-        className="light"
-        id={activeLight === "red" ? "red-light-on" : "red-light-off"}
-      ></div>
-      <div
-        className="light"
-        id={activeLight === "yellow" ? "yellow-light-on" : "yellow-light-off"}
-      ></div>
-      <div
-        className="light"
-        id={activeLight === "green" ? "green-light-on" : "green-light-off"}
-      ></div>
+      <Light color='red' activeLight={activeLight} />
+      <Light color='yellow' activeLight={activeLight} />
+      <Light color='green' activeLight={activeLight} />
     </div>
   );
 }

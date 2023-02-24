@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import {useState} from 'react'
 import './App.css'
 import TrafficLights from './components/TrafficLights';
-
+import Button from './components/Button/Button';
 
 function App() {
+  const [isRunning, setIsRunning] = useState(true)
   
+  const onClick = (e) => {
+    setIsRunning(!isRunning)
+  }
 
   return (
     <div className="App">
-      <TrafficLights />
+      <TrafficLights isRunning={isRunning} />
+      <Button onClick={onClick} isRunning={isRunning}/>
     </div>
   );
 }
