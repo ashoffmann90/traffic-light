@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import TrafficLight from "./TrafficLight";
+import TrafficLight from "./TrafficLight/TrafficLight";
 
-function TrafficLights({isRunning}) {
+function TrafficLights({ isRunning }) {
   const [activeLight, setActiveLight] = useState("red");
-  
+
   useEffect(() => {
     if (isRunning) {
       const timeoutId = setTimeout(() => {
-        let nextActiveLight
+        let nextActiveLight;
         if (activeLight === "red") {
           nextActiveLight = "green";
         } else if (activeLight === "green") {
@@ -16,11 +16,10 @@ function TrafficLights({isRunning}) {
           nextActiveLight = "red";
         }
         setActiveLight(nextActiveLight);
-        // console.log("next", nextActiveLight);
-      }, 1000)
-      return () => clearTimeout(timeoutId)
+      }, 1000);
+      return () => clearTimeout(timeoutId);
     }
-  }, [activeLight, isRunning])
+  }, [activeLight, isRunning]);
 
   return (
     <div>

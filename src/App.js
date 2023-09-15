@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import './App.css'
-import TrafficLights from './components/TrafficLights';
-import Button from './components/Button/Button';
+import TrafficLights from './components/TrafficLightsContainer';
+import Button from './components/Button';
 
 function App() {
   const [isRunning, setIsRunning] = useState(true)
