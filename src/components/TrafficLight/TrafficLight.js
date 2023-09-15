@@ -1,13 +1,14 @@
 import React from "react";
 import Light from "../Light";
 import "./TrafficLight.css";
+import { GREEN, RED, YELLOW } from "../../constants";
 
 function TrafficLight({ activeLight }) {
   return (
     <div className="light-container">
-      <Light color="red" activeLight={activeLight} />
-      <Light color="yellow" activeLight={activeLight} />
-      <Light color="green" activeLight={activeLight} />
+      <Light color={RED} activeLight={activeLight} />
+      <Light color={YELLOW} activeLight={activeLight} />
+      <Light color={GREEN} activeLight={activeLight} />
     </div>
   );
 }
