@@ -1,7 +1,7 @@
 function Light({ color, activeLight }) {
   return (
     <div
-      className="light"
+      className='light'
       id={activeLight === color ? `${color}-light-on` : `${color}-light-off`}
     ></div>
   )

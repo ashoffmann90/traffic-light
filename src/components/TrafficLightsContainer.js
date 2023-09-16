@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from "react";
-import TrafficLight from "./TrafficLight/TrafficLight";
-import { RED, YELLOW, GREEN } from "../constants";
+import React, { useEffect, useState } from 'react'
+import TrafficLight from './TrafficLight/TrafficLight'
+import { RED, YELLOW, GREEN } from '../constants'
 
 function TrafficLights({ isRunning }) {
-  const [activeLight, setActiveLight] = useState(RED);
+  const [activeLight, setActiveLight] = useState(RED)
 
   useEffect(() => {
     if (isRunning) {
       const timeoutId = setTimeout(() => {
-        let nextActiveLight;
+        let nextActiveLight
         if (activeLight === RED) {
-          nextActiveLight = GREEN;
+          nextActiveLight = GREEN
         } else if (activeLight === GREEN) {
-          nextActiveLight = YELLOW;
+          nextActiveLight = YELLOW
         } else if (activeLight === YELLOW) {
-          nextActiveLight = RED;
+          nextActiveLight = RED
         }
-        setActiveLight(nextActiveLight);
-      }, 1000);
-      return () => clearTimeout(timeoutId);
+        setActiveLight(nextActiveLight)
+      }, 1000)
+      return () => clearTimeout(timeoutId)
     }
-  }, [activeLight, isRunning]);
+  }, [activeLight, isRunning])
 
   return (
     <div>
       <TrafficLight activeLight={activeLight} />
     </div>
-  );
+  )
 }
 
-export default TrafficLights;
+export default TrafficLights
