@@ -1,7 +1,7 @@
 import React from 'react'
-import Light from '../Light'
-import './TrafficLight.css'
-import {COLORS} from '../../constants'
+import Light from './Light'
+import '../App.css'
+import { COLORS } from '../constants'
 
 function TrafficLight({ activeLight }) {
   return (

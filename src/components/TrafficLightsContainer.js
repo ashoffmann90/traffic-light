@@ -1,6 +1,6 @@
-import React, {useEffect, useState, useMemo } from 'react'
-import TrafficLight from './TrafficLight/TrafficLight'
-import {COLORS} from '../constants'
+import React, { useEffect, useState, useMemo } from 'react'
+import TrafficLight from './TrafficLight'
+import { COLORS } from '../constants'
 
 function TrafficLights({ isRunning }) {
   let lightOrder = useMemo(() => [COLORS.GREEN, COLORS.YELLOW, COLORS.RED], [])
@@ -11,15 +11,15 @@ function TrafficLights({ isRunning }) {
     if (isRunning) {
       const timeoutId = setTimeout(() => {
         if (activeLightIndex <= lightOrder.length - 1) {
-          setActiveLightIndex(activeLightIndex+1)
-        } 
-        if (activeLightIndex === lightOrder.length - 1){
+          setActiveLightIndex(activeLightIndex + 1)
+        }
+        if (activeLightIndex === lightOrder.length - 1) {
           setActiveLightIndex(0)
         }
       }, 1000)
       return () => clearTimeout(timeoutId)
     }
-  },[activeLightIndex, isRunning, lightOrder])
+  }, [activeLightIndex, isRunning, lightOrder])
 
   // ORIGINAL
   // useEffect(() => {
