@@ -1,30 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState, useMemo } from 'react'
 import TrafficLight from './TrafficLight/TrafficLight'
-import { RED, YELLOW, GREEN } from '../constants'
+import {COLORS} from '../constants'
 
 function TrafficLights({ isRunning }) {
-  const [activeLight, setActiveLight] = useState(RED)
+  let lightOrder = useMemo(() => [COLORS.GREEN, COLORS.YELLOW, COLORS.RED], [])
+  const [activeLightIndex, setActiveLightIndex] = useState(0)
 
+  // REFACTOR
   useEffect(() => {
     if (isRunning) {
       const timeoutId = setTimeout(() => {
-        let nextActiveLight
-        if (activeLight === RED) {
-          nextActiveLight = GREEN
-        } else if (activeLight === GREEN) {
-          nextActiveLight = YELLOW
-        } else if (activeLight === YELLOW) {
-          nextActiveLight = RED
+        if (activeLightIndex <= lightOrder.length - 1) {
+          setActiveLightIndex(activeLightIndex+1)
+        } 
+        if (activeLightIndex === lightOrder.length - 1){
+          setActiveLightIndex(0)
         }
-        setActiveLight(nextActiveLight)
       }, 1000)
       return () => clearTimeout(timeoutId)
     }
-  }, [activeLight, isRunning])
+  },[activeLightIndex, isRunning, lightOrder])
+
+  // ORIGINAL
+  // useEffect(() => {
+  //   if (isRunning) {
+  //     const timeoutId = setTimeout(() => {
+  //       let nextActiveLight
+  //       if (activeLight === RED) {
+  //         nextActiveLight = GREEN
+  //       } else if (activeLight === GREEN) {
+  //         nextActiveLight = YELLOW
+  //       } else if (activeLight === YELLOW) {
+  //         nextActiveLight = RED
+  //       }
+  //       setActiveLight(nextActiveLight)
+  //     }, 1000)
+  //     return () => clearTimeout(timeoutId)
+  //   }
+  // }, [activeLight, isRunning])
 
   return (
     <div>
-      <TrafficLight activeLight={activeLight} />
+      <TrafficLight activeLight={lightOrder[activeLightIndex]} />
     </div>
   )
 }
